@@ -8,8 +8,15 @@ Ansible playbook to streamline the customization of a fresh Kali Linux installat
 - [Kali Linux Ansible](#kali-linux-ansible)
 - [Setup](#setup)
 - [Requirements](#requirements)
-- [License](#license)
 
+## Requirements
+
+- Ansible 2.9 or higher
+
+To install Ansible on Kali Linux, run:
+```bash
+sudo apt install ansible
+```
 
 ## Setup
 
