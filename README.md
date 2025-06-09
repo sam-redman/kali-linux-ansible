@@ -15,11 +15,15 @@ Ansible playbook to streamline the customization of a fresh Kali Linux installat
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/sam-redman/kali-linux-ansible.git
+   ```
+
+2. Change into the project directory:
+   ```bash
    cd kali-linux-ansible
    ```
 
-2. Run the playbook:
+3. Run the playbook:
    ```bash
    ansible-playbook playbooks/kali-setup.yml
    ```
