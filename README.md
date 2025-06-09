@@ -1,5 +1,7 @@
 # Kali Linux Ansible
 
+Ansible playbook to streamline the customization of a fresh Kali Linux installation. Much of the setup is personal preference, so you may find that you want to add your own tasks and roels as your needs evolve.
+
 <!-- Add Table of Contents below -->
 ## Table of Contents
 
@@ -8,7 +10,6 @@
 - [Requirements](#requirements)
 - [License](#license)
 
-Ansible playbook to streamline the customization of a fresh Kali Linux installation. Much of the setup is personal preference, so you may find that you want to add your own tasks and roels as your needs evolve.
 
 ## Setup
 
