@@ -19,22 +19,7 @@ Ansible playbook to streamline the customization of a fresh Kali Linux installat
    cd kali-linux-ansible
    ```
 
-2. Update the inventory file for local execution:
-   ```ini
-   [kali]
-   localhost ansible_connection=local
-   ```
-
-3. Run the playbook:
+2. Run the playbook:
    ```bash
    ansible-playbook playbooks/kali-setup.yml
    ```
-
-## Requirements
-
-- Ansible 2.9 or higher
-- SSH access to the Kali Linux host
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
