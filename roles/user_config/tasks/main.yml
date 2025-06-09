@@ -1,0 +1,73 @@
+- name: Set terminal transparency to 0 (no transparency)
+  lineinfile:
+    path: "{{ terminalrc_path }}"
+    regexp: '^Transparency='
+    line: 'Transparency=0'
+    create: yes
+    owner: "{{ ssh_user }}"
+    group: "{{ ssh_user }}"
+    mode: '0644'
+
+- name: Ensure Flameshot autostarts for user
+  copy:
+    dest: "/home/{{ ssh_user }}/.config/autostart/flameshot.desktop"
+    content: |
+      [Desktop Entry]
+      Type=Application
+      Exec=flameshot
+      Hidden=false
+      NoDisplay=false
+      X-GNOME-Autostart-enabled=true
+      Name=Flameshot
+      Comment=Start Flameshot at login
+    owner: "{{ ssh_user }}"
+    group: "{{ ssh_user }}"
+    mode: '0644'
+
+- name: Disable auto-lock in XFCE
+  lineinfile:
+    path: /home/{{ ssh_user }}/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-power-manager.xml
+    regexp: '<property name="lock-screen-suspend-hibernate"'
+    line: '<property name="lock-screen-suspend-hibernate" type="bool" value="false"/>'
+    create: yes
+    owner: "{{ ssh_user }}"
+    group: "{{ ssh_user }}"
+    mode: '0644'
+
+- name: Set keyboard layout to gb
+  lineinfile:
+    path: /etc/default/keyboard
+    regexp: '^XKBLAYOUT='
+    line: 'XKBLAYOUT="gb"'
+    create: yes
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Unzip rockyou wordlist
+  unarchive:
+    src: "{{ rockyou_wordlist_gz }}"
+    dest: /usr/share/wordlists/
+    remote_src: yes
+    creates: "{{ rockyou_wordlist_txt }}"
+
+- name: Create Logs directory
+  file:
+    path: "/home/{{ ssh_user }}/Logs"
+    state: directory
+    owner: "{{ ssh_user }}"
+    group: "{{ ssh_user }}"
+    mode: '0755'
+
+- name: Enable session logging in bashrc
+  lineinfile:
+    path: "/home/{{ ssh_user }}/.bashrc"
+    regexp: '^# Session logging'
+    insertafter: EOF
+    line: |
+      # Session logging
+      export LOG_DIR="$HOME/Logs"
+      export PROMPT_COMMAND='RETRN_VAL=$?; echo "$(date +"%Y-%m-%d %T") $(whoami) $(history 1 | sed "s/^ *[0-9]* *//")" >> $LOG_DIR/session.log'
+    owner: "{{ ssh_user }}"
+    group: "{{ ssh_user }}"
+    mode: '0644'

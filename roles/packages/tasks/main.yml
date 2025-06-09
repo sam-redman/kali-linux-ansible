@@ -1,0 +1,29 @@
+- name: Install packages
+  apt:
+    name: "{{ packages }}"
+    state: present
+
+- name: Install Mozilla Firefox (non-ESR version)
+  apt:
+    name: firefox
+    state: present
+
+- name: Install LibreOffice
+  apt:
+    name: libreoffice
+    state: present
+
+- name: Install Docker
+  apt:
+    name: docker.io
+    state: present
+
+- name: Install Sublime Text
+  apt:
+    name: sublime-text
+    state: present
+
+- name: Install Flameshot
+  apt:
+    name: flameshot
+    state: present

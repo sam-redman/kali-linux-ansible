@@ -1,0 +1,10 @@
+---
+- hosts: kali
+  become: yes
+  vars_files:
+    - ../host_vars/kali.yml
+  roles:
+    - common
+    - packages
+    - services
+    - user_config

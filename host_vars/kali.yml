@@ -1,0 +1,18 @@
+hostname: kali-linux
+ssh_user: kali
+ssh_key: /path/to/ssh/key
+packages:
+  - nmap
+  - metasploit-framework
+  - burpsuite
+  - aircrack-ng
+  - wireshark
+  - flameshot
+services:
+  - apache2
+  - postgresql
+  - mysql
+  - sshd
+terminalrc_path: "/home/{{ ssh_user }}/.config/xfce4/terminal/terminalrc"
+rockyou_wordlist_gz: "/usr/share/wordlists/rockyou.txt.gz"
+rockyou_wordlist_txt: "/usr/share/wordlists/rockyou.txt"

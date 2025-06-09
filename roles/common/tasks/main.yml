@@ -1,0 +1,16 @@
+- name: Set hostname
+  hostname:
+    name: "{{ hostname }}"
+
+- name: Update and upgrade apt packages
+  apt:
+    update_cache: yes
+    upgrade: dist
+
+- name: Autoclean apt cache
+  apt:
+    autoclean: yes
+
+- name: Autoremove unused packages
+  apt:
+    autoremove: yes
